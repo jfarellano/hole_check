@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.0.10.9
+- http://www.phpmyadmin.net
+-
+- Host: localhost
+- Generation Time: Nov 08, 2017 at 02:14 PM
+- Server version: 5.1.73
+- PHP Version: 5.3.3
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="http://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="tripquality" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="Raw">
+                CREATE TABLE `Raw` (
+                  `ID` int(11) NOT NULL AUTO_INCREMENT,
+                  `Trip_ID` int(11) NOT NULL,
+                  `TimeStamp` bigint(15) NOT NULL,
+                  `Lat` decimal(10,8) NOT NULL,
+                  `Lng` decimal(11,8) NOT NULL,
+                  `Alt` decimal(10,8) NOT NULL,
+                  `Speed` float NOT NULL,
+                  `Ace` float NOT NULL,
+                  `Range` float DEFAULT NULL,
+                  `Weight` decimal(12,10) DEFAULT NULL,
+                  `Coord` point NOT NULL,
+                  `Y` float DEFAULT NULL,
+                  `Z` float DEFAULT NULL,
+                  `LX` float DEFAULT NULL,
+                  `LY` float DEFAULT NULL,
+                  `LZ` float DEFAULT NULL,
+                  `Offset` float DEFAULT NULL,
+                  PRIMARY KEY (`ID`)
+                ) ENGINE=MyISAM AUTO_INCREMENT=215983 DEFAULT CHARSET=latin1;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'tripquality'
+    -->
+    <database name="tripquality">
+        <!-- Table Raw -->
+        <table name="Raw">
+            <column name="ID">1</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528117906</column>
+            <column name="Lat">11.02038629</column>
+            <column name="Lng">-74.85099406</column>
+            <column name="Alt">70.31454791</column>
+            <column name="Speed">0.603202</column>
+            <column name="Ace">10.3196</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">2</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528119898</column>
+            <column name="Lat">11.02039400</column>
+            <column name="Lng">-74.85100371</column>
+            <column name="Alt">40.73302317</column>
+            <column name="Speed">0.492859</column>
+            <column name="Ace">10.252</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">3</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528129967</column>
+            <column name="Lat">11.02083999</column>
+            <column name="Lng">-74.85060903</column>
+            <column name="Alt">32.61130051</column>
+            <column name="Speed">4.42896</column>
+            <column name="Ace">13.7182</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">4</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528130920</column>
+            <column name="Lat">11.02084492</column>
+            <column name="Lng">-74.85057808</column>
+            <column name="Alt">32.49004650</column>
+            <column name="Speed">0</column>
+            <column name="Ace">13.5542</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">5</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528131579</column>
+            <column name="Lat">11.02086086</column>
+            <column name="Lng">-74.85055674</column>
+            <column name="Alt">28.91130267</column>
+            <column name="Speed">1.54368</column>
+            <column name="Ace">12.9413</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">6</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528132609</column>
+            <column name="Lat">11.02094242</column>
+            <column name="Lng">-74.85056356</column>
+            <column name="Alt">19.17286118</column>
+            <column name="Speed">6.16387</column>
+            <column name="Ace">12.9239</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">7</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528133616</column>
+            <column name="Lat">11.02098308</column>
+            <column name="Lng">-74.85060471</column>
+            <column name="Alt">27.25305204</column>
+            <column name="Speed">6.70577</column>
+            <column name="Ace">14.5555</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">8</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528134614</column>
+            <column name="Lat">11.02096563</column>
+            <column name="Lng">-74.85056156</column>
+            <column name="Alt">27.16608747</column>
+            <column name="Speed">0</column>
+            <column name="Ace">12.3236</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">9</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528135616</column>
+            <column name="Lat">11.02095905</column>
+            <column name="Lng">-74.85049848</column>
+            <column name="Alt">28.00993691</column>
+            <column name="Speed">0</column>
+            <column name="Ace">15.9358</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">10</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528136616</column>
+            <column name="Lat">11.02096028</column>
+            <column name="Lng">-74.85039559</column>
+            <column name="Alt">29.94983180</column>
+            <column name="Speed">7.31466</column>
+            <column name="Ace">14.0216</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">11</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528137613</column>
+            <column name="Lat">11.02094696</column>
+            <column name="Lng">-74.85031504</column>
+            <column name="Alt">31.71706244</column>
+            <column name="Speed">7.84916</column>
+            <column name="Ace">14.8243</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">12</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528138618</column>
+            <column name="Lat">11.02092634</column>
+            <column name="Lng">-74.85024322</column>
+            <column name="Alt">28.95191639</column>
+            <column name="Speed">8.65983</column>
+            <column name="Ace">14.9171</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">13</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528139620</column>
+            <column name="Lat">11.02090493</column>
+            <column name="Lng">-74.85017477</column>
+            <column name="Alt">26.01888948</column>
+            <column name="Speed">9.01379</column>
+            <column name="Ace">14.6932</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">14</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528140615</column>
+            <column name="Lat">11.02088577</column>
+            <column name="Lng">-74.85009796</column>
+            <column name="Alt">24.68207336</column>
+            <column name="Speed">9.19747</column>
+            <column name="Ace">14.2485</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">15</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528141622</column>
+            <column name="Lat">11.02086752</column>
+            <column name="Lng">-74.85001801</column>
+            <column name="Alt">22.93128346</column>
+            <column name="Speed">9.44959</column>
+            <column name="Ace">17.1509</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">16</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528142618</column>
+            <column name="Lat">11.02085463</column>
+            <column name="Lng">-74.84992743</column>
+            <column name="Alt">22.49705772</column>
+            <column name="Speed">9.32961</column>
+            <column name="Ace">15.8077</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">17</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528143623</column>
+            <column name="Lat">11.02083782</column>
+            <column name="Lng">-74.84983924</column>
+            <column name="Alt">22.92121125</column>
+            <column name="Speed">9.75188</column>
+            <column name="Ace">16.4895</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">18</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528144619</column>
+            <column name="Lat">11.02081784</column>
+            <column name="Lng">-74.84975118</column>
+            <column name="Alt">22.28442407</column>
+            <column name="Speed">9.92168</column>
+            <column name="Ace">15.2876</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">19</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528145615</column>
+            <column name="Lat">11.02079874</column>
+            <column name="Lng">-74.84965823</column>
+            <column name="Alt">22.07657576</column>
+            <column name="Speed">9.97424</column>
+            <column name="Ace">14.9632</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">20</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528146614</column>
+            <column name="Lat">11.02077921</column>
+            <column name="Lng">-74.84956256</column>
+            <column name="Alt">20.95704776</column>
+            <column name="Speed">9.52285</column>
+            <column name="Ace">16.3374</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">21</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528147701</column>
+            <column name="Lat">11.02076425</column>
+            <column name="Lng">-74.84946540</column>
+            <column name="Alt">19.83858166</column>
+            <column name="Speed">9.28711</column>
+            <column name="Ace">15.9627</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">22</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528148626</column>
+            <column name="Lat">11.02075032</column>
+            <column name="Lng">-74.84937378</column>
+            <column name="Alt">19.88950877</column>
+            <column name="Speed">8.69588</column>
+            <column name="Ace">13.2818</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">23</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528149622</column>
+            <column name="Lat">11.02073310</column>
+            <column name="Lng">-74.84929146</column>
+            <column name="Alt">19.03946449</column>
+            <column name="Speed">7.03224</column>
+            <column name="Ace">13.7523</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">24</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528150649</column>
+            <column name="Lat">11.02071895</column>
+            <column name="Lng">-74.84924115</column>
+            <column name="Alt">19.05934970</column>
+            <column name="Speed">4.62002</column>
+            <column name="Ace">13.9911</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">25</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528151627</column>
+            <column name="Lat">11.02071311</column>
+            <column name="Lng">-74.84921688</column>
+            <column name="Alt">19.98562950</column>
+            <column name="Speed">2.34492</column>
+            <column name="Ace">12.4762</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">26</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528154636</column>
+            <column name="Lat">11.02069690</column>
+            <column name="Lng">-74.84918484</column>
+            <column name="Alt">22.47813625</column>
+            <column name="Speed">1.82725</column>
+            <column name="Ace">12.8341</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">27</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528155620</column>
+            <column name="Lat">11.02068532</column>
+            <column name="Lng">-74.84916389</column>
+            <column name="Alt">23.63448650</column>
+            <column name="Speed">3.6926</column>
+            <column name="Ace">12.9443</column>
+        </table>
+        <table name="Raw">
+            <column name="ID">28</column>
+            <column name="Trip_ID">1</column>
+            <column name="TimeStamp">1431528156630</column>
+            <column name="Lat">11.02066257</column>
+            <column name="Lng">-74.84912752</column>
+            <column name="Alt">24.96678005</column>
+            <column name="Speed">4.9593</column>
+            <column name="Ace">11.9399</column>
+        </table>
+    </database>
+</pma_xml_export>
