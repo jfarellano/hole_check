@@ -55,6 +55,7 @@ c_trip = 0
 l_lat = 0#11.02038629
 l_lon = 0#-74.85099406
 length = 0
+print 'Loading data'
 for child in root:
 	for i, rows in enumerate(child):
 		if i != 0:
@@ -80,6 +81,7 @@ trips.append(trip(c_trip, length))
 # 4 lon
 # 7 intensity
 
+print 'Normalizing data'
 #normalize trip 
 for i in xrange(1,maxId +1):
 	filtered = filter(lambda x: x.trip_id == i, points)
@@ -90,20 +92,23 @@ for i in xrange(1,maxId +1):
 
 # for p in points:
 	#print p
-
+print 'Sorting data'
 #sort points from big to small
 points.sort(key=lambda x: x.intensity, reverse=True)
 
+
+print 'Procesing data'
 #Get holes and markdown each that is taken for a hole
 iter = 0
 while points[iter].intensity > threshold:
 	point = points[iter]
 	if point.available:
-		filtered = filter(lambda x: inRage(point, x) and x.available, points)
+		print points[iter]
+		filtered = filter(lambda x: inRage(point, x), points)
 		if avrage(filtered) > threshold:
 			holes.append(point)
-			for x in xrange(0,len(filtered)):
-				filtered[x].available = False
+			for f in filtered:
+				points.remove(f)
 	iter = iter + 1
 print("--- %s seconds ---" % (time.time() - start_time))
 

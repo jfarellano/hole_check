@@ -1,3 +1,4 @@
+--- 3115.118541 seconds ---
 Huecos
 Trip 4: long=-74.82057514 lati=11.0137919 inten=1.0 av=False
 Trip 15: long=-74.82500095 lati=11.01252865 inten=1.0 av=False
