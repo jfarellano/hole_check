@@ -1,5 +1,7 @@
 import xml.etree.ElementTree as ET
 from math import radians, cos, sin, asin, sqrt
+import time
+start_time = time.time()
 
 #Var declaration
 class trip:
@@ -103,7 +105,7 @@ while points[iter].intensity > threshold:
 			for x in xrange(0,len(filtered)):
 				filtered[x].available = False
 	iter = iter + 1
-
+print("--- %s seconds ---" % (time.time() - start_time))
 
 #Print results
 print 'Huecos'
