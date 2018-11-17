@@ -24,8 +24,8 @@ class point:
 points = []
 trips = []
 holes = []
-diameter = 20
-threshold = 0.8
+diameter = 20 #Parametro uno..!
+threshold = 0.8 #Parametro dos..!
 
 def inRage(P, point):
 	return haversine(P.lon, P.lat, point.lon, point.lat) <= diameter
@@ -46,10 +46,10 @@ def haversine(lon1, lat1, lon2, lat2):
     r = 6371000
     return c * r
 	
-#parse xml data
+#parse xml data 
 tree = ET.parse('raw.xml')
 root = tree.getroot()
-#Load to objects xml data
+#Load to objects xml data 
 maxId = 0
 c_trip = 0
 l_lat = 0#11.02038629
@@ -102,14 +102,17 @@ print 'Procesing data'
 iter = 0
 while points[iter].intensity > threshold:
 	point = points[iter]
-	if point.available:
-		print points[iter]
-		filtered = filter(lambda x: inRage(point, x), points)
-		if avrage(filtered) > threshold:
-			holes.append(point)
-			for f in filtered:
-				points.remove(f)
+	#if point.available: #quitar para el secuencial...!!
+	print point.intensity
+	filtered = filter(lambda x: inRage(point, x), points)
+	#Meter en cola filtered
+	for f in filtered:
+		points.remove(f)
+	if avrage(filtered) > threshold: #Esto lo hace el subordinado
+		holes.append(point) #Esto lo hace el subordinado
 	iter = iter + 1
+
+#Master procesa elementos de la cola
 print("--- %s seconds ---" % (time.time() - start_time))
 
 #Print results
