@@ -1,7 +1,13 @@
 import xml.etree.ElementTree as ET
 from math import radians, cos, sin, asin, sqrt
 import time
+
 start_time = time.time()
+points = []
+trips = []
+holes = []
+diameter = 20 #Parametro uno..!
+threshold = 0.8 #Parametro dos..!
 
 #Var declaration
 class trip:
@@ -21,11 +27,6 @@ class point:
 
 	def __str__(self):
 		return "Trip %s: long=%s lati=%s inten=%s av=%s" % (self.trip_id, self.lon, self.lat, self.intensity, self.available)
-points = []
-trips = []
-holes = []
-diameter = 20 #Parametro uno..!
-threshold = 0.8 #Parametro dos..!
 
 def inRage(P, point):
 	return haversine(P.lon, P.lat, point.lon, point.lat) <= diameter
