@@ -137,7 +137,7 @@ if rank == 0:
 			point.available = False
 			for f in filtered: f.available = False
 			sys.stdout.write('Sending '+str(point.lon)+','+str(point.lat)+' to rank '+str(procesing)+' on Rank: '+str(rank)+' With intensity '+str(point.intensity)+'\n')
-			comm.send(filtered, dest=procesing) #ALSO SEND POINT TO KEEP ON HOLES...!
+			comm.send([filtered, point], dest=procesing) #ALSO SEND POINT TO KEEP ON HOLES...!
 			procesing = (procesing + 1) % size
 			if procesing == 0: procesing = 1;
 			iter = iter + 1
@@ -159,7 +159,9 @@ else:
 	start = comm.bcast(start, root=0) #WAIT FOR MAIN CORE TO FINISH...
 	sys.stdout.write('Rank: '+ str(rank)+' Alive\n')
 	while start:
-		filtered = comm.recv(source=0) #WAITING FOR POINT TO BE SEND...
+		array = comm.recv(source=0) #WAITING FOR POINT TO BE SEND...
+		filtered = array[0]
+		point =  array[1]
 		sub_time = time.time()
 		if isinstance(job, bool):
 			start = False
