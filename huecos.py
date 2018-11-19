@@ -7,6 +7,7 @@ import sys
 
 start_time = time.time()
 
+comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
 
@@ -18,7 +19,7 @@ results = []
 #data = []
 
 diameter = int(argv[1]) #20 #Parametro uno..!
-threshold = int(argv[2]) #0.8 #Parametro dos..!
+threshold = float(argv[2]) #0.8 #Parametro dos..!
 
 maxId = 0
 c_trip = 0
@@ -135,8 +136,8 @@ if rank == 0:
 			filtered = filter(lambda x: inRage(point, x), points) #Filter could be Par?
 			point.available = False
 			for f in filtered: f.available = False
-			sys.stdout.write('Sending '+str(point.id)+' to rank '+str(procesing)+' on Rank: '+str(rank)+' With intensity '+str(point.intensity)+'\n')
-			comm.send(filtered, dest=procesing)
+			sys.stdout.write('Sending '+str(point.lon)+','+str(point.lat)+' to rank '+str(procesing)+' on Rank: '+str(rank)+' With intensity '+str(point.intensity)+'\n')
+			comm.send(filtered, dest=procesing) #ALSO SEND POINT TO KEEP ON HOLES...!
 			procesing = (procesing + 1) % size
 			if procesing == 0: procesing = 1;
 			iter = iter + 1
