@@ -241,12 +241,11 @@ while points[iter].intensity > threshold:
 time = time.time() - start_time
 
 #Print results
-print 'Huecos'
-for h in holes:
-	print h
+print '----------------------------------------------------'
+print 'Huecos', len(holes)
 print 'Viajes'
 for t in trips:
 	print t
 
 
-print time
+print 'Tiempo', time
