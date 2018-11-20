@@ -172,7 +172,7 @@ def haversine(lon1, lat1, lon2, lat2):
     return c * r
 	
 #parse xml data
-tree = ET.parse('raw_min.xml')
+tree = ET.parse('raw.xml')
 root = tree.getroot()
 #Load to objects xml data
 maxId = 0
@@ -241,6 +241,7 @@ while points[iter].intensity > threshold:
 
 	if np.mean(intensities) > threshold:
 		holes.append(point)
+		iter = iter - 1
 	iter = iter + 1
 
 time = time.time() - start_time
