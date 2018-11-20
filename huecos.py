@@ -71,7 +71,7 @@ def haversine(lon1, lat1, lon2, lat2):
     return c * r
 	
 #parse xml data 
-tree = ET.parse('raw_micro.xml')
+tree = ET.parse('raw.xml')
 root = tree.getroot()
 #Load to objects xml data 
 
