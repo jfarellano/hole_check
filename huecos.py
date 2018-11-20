@@ -159,12 +159,14 @@ if rank == 0:
 	#sys.stdout.write(str(holes)+'\n')	
 
 	#Print results
-	print 'Huecos'
-	for h in holes:
-		print h
+	print '---------------------------------------------------'
+	print 'Tiempo ', str(start_time - time.time())
+	print 'Huecos ', len(holes)
 	print 'Viajes'
 	for t in trips:
 		print t	
+
+
 
 	#sys.stdout.write('Huecos \n')
 	#for h in holes:
