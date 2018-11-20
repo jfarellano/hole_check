@@ -151,7 +151,7 @@ points = []
 trips = []
 holes = []
 diameter = int(argv[1]) #20
-threshold = int(argv[2]) #0.8
+threshold = float(argv[2]) #0.8
 
 def inRage(P, point):
 	return haversine(P.lon, P.lat, point.lon, point.lat) <= diameter
