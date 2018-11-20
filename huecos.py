@@ -155,12 +155,6 @@ threshold = 0.8
 def inRage(P, point):
 	return haversine(P.lon, P.lat, point.lon, point.lat) <= diameter
 
-def avrage(list):
-	sum = 0
-	for l in list:
-		sum += l.intensity
-	return float(sum / max(len(list), 1))
-
 def haversine(lon1, lat1, lon2, lat2):
     lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
     # haversine formula 
