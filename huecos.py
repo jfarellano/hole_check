@@ -2,8 +2,9 @@ from math import radians, cos, sin, asin, sqrt
 from mpi4py import MPI
 from sys import argv
 import xml.etree.ElementTree as ET
+import numpy as np
 import time
-import sys
+import sys	
 
 start_time = time.time()
 
@@ -70,7 +71,7 @@ def haversine(lon1, lat1, lon2, lat2):
     return c * r
 	
 #parse xml data 
-tree = ET.parse('raw.xml')
+tree = ET.parse('raw_micro.xml')
 root = tree.getroot()
 #Load to objects xml data 
 
@@ -132,22 +133,31 @@ if rank == 0:
 	comm.bcast(start, root=0)
 	while points[iter].intensity > threshold: #SEARCHING POINTS TO SEND...
 		point = points[iter]
-		if point.available:
-			filtered = filter(lambda x: inRage(point, x), points) #Filter could be Par?
-			point.available = False
-			for f in filtered: f.available = False
-			sys.stdout.write('Sending '+str(point.lon)+','+str(point.lat)+' to rank '+str(procesing)+' on Rank: '+str(rank)+' With intensity '+str(point.intensity)+'\n')
-			comm.send([filtered, point], dest=procesing) #ALSO SEND POINT TO KEEP ON HOLES...!
-			procesing = (procesing + 1) % size
-			if procesing == 0: procesing = 1;
-			iter = iter + 1
-	
-	for i in range(1,size): comm.send(False, dest=i)
+		filtered = []
+		intensities = []
+		i = 0
+		while i < len(points):
+			#if points[i].available:
+			if inRage(point, points[i]):
+				filtered.append(points[i])
+				intensities.append(points[i].intensity)
+				#points[i].available = False	
+				del points[i]
+				i = i - 1
+			i = i + 1
+		sys.stdout.write('Sending '+str(point.lon)+','+str(point.lat)+' to rank '+str(procesing)+' on Rank: '+str(rank)+' With intensity '+str(point.intensity)+'\n')
+		array = [intensities, point.lon, point.lat, point.intensity, point.trip_id]
+		comm.send(array, dest=procesing) 
+		procesing = (procesing + 1) % size
+		if procesing == 0: procesing = 1;
+		iter = iter + 1
+	start = False
+	for i in range(1,size): comm.send(start, dest=i)
 	for i in range(1,size):
-		results = comm.recv(source=i)
+		results = comm.recv(source=i)		
 		for x in range(0,len(results)): holes.append(results[x])
 	#sys.stdout.write(str(holes)+'\n')	
-	
+
 	#Print results
 	print 'Huecos'
 	for h in holes:
@@ -155,18 +165,32 @@ if rank == 0:
 	print 'Viajes'
 	for t in trips:
 		print t	
+
+	#sys.stdout.write('Huecos \n')
+	#for h in holes:
+	#	sys.stdout.write(h)
+	#	sys.stdout.write('\n')	
+	#sys.stdout.write('Viajes \n')
+	#for t in trips:
+	#	sys.stdout.write(t)
+	#	sys.stdout.write('\n')
+
 else:
 	start = comm.bcast(start, root=0) #WAIT FOR MAIN CORE TO FINISH...
 	sys.stdout.write('Rank: '+ str(rank)+' Alive\n')
 	while start:
-		array = comm.recv(source=0) #WAITING FOR POINT TO BE SEND...
-		filtered = array[0]
-		point =  array[1]
+		array = None
+		array = comm.recv(array, source=0) #WAITING FOR POINT TO BE SEND...
 		sub_time = time.time()
-		if isinstance(job, bool):
+		if isinstance(array, bool):
 			start = False
 		else:
-			if avrage(filtered) > threshold: 
-				results.append(point)
+			filtered = array[0]
+			point_lon =  array[1]
+			point_lat = array[2]
+			point_intensity =  array[3]
+			point_trip_id = array[4]
+			if np.mean(filtered) > threshold:
+				results.append(np.array([point_lon, point_lat, point_intensity, point_trip_id]))
 			sys.stdout.write('Rank - ' + str(rank) + ' ready on ' + str(sub_time - time.time())+'\n')	
 	comm.send(results, dest=0)
