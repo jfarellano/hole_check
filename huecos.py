@@ -125,6 +125,7 @@
 import xml.etree.ElementTree as ET
 from math import radians, cos, sin, asin, sqrt
 import time
+from sys import  argv
 import numpy as np
 start_time = time.time()
 
@@ -149,8 +150,8 @@ class point:
 points = []
 trips = []
 holes = []
-diameter = 20
-threshold = 0.8
+diameter = int(argv[1]) #20
+threshold = int(argv[2]) #0.8
 
 def inRage(P, point):
 	return haversine(P.lon, P.lat, point.lon, point.lat) <= diameter
